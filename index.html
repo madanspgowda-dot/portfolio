@@ -8,6 +8,193 @@
     <title>Madan Gowda S P | Portfolio</title>
 
     <style>
+        /* ===== MOBILE SIDEBAR ===== */
+
+.menu-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    color: #38bdf8;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* Sidebar */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -320px;
+
+    width: 300px;
+    height: 100vh;
+
+    background: #111a2e;
+
+    z-index: 2000;
+
+    padding: 25px;
+
+    overflow-y: auto;
+
+    transition: 0.4s ease;
+
+    border-left: 1px solid #25314b;
+}
+
+/* Active Sidebar */
+
+.sidebar.active {
+    right: 0;
+}
+
+/* Overlay */
+
+.overlay {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.7);
+
+    z-index: 1500;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: 0.3s;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Sidebar Header */
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid #25314b;
+}
+
+.sidebar-header h2 {
+    color: white;
+}
+
+.sidebar-header span {
+    color: #38bdf8;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 32px;
+    cursor: pointer;
+}
+
+/* Profile */
+
+.sidebar-profile {
+    text-align: center;
+    padding: 25px 0;
+}
+
+.sidebar-profile img {
+    width: 95px;
+    height: 95px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    border: 3px solid #38bdf8;
+
+    box-shadow: 0 0 20px rgba(56,189,248,0.3);
+}
+
+.sidebar-profile h3 {
+    margin-top: 12px;
+    color: white;
+}
+
+.sidebar-profile p {
+    color: #38bdf8;
+    margin-top: 5px;
+}
+
+.sidebar-profile span {
+    color: #94a3b8;
+    font-size: 13px;
+}
+
+/* Sidebar Links */
+
+.sidebar-links {
+    list-style: none;
+}
+
+.sidebar-links li {
+    margin: 8px 0;
+}
+
+.sidebar-links a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 12px 15px;
+
+    color: #cbd5e1;
+
+    border-radius: 8px;
+
+    transition: 0.3s;
+}
+
+.sidebar-links a:hover {
+    background: #1e3a5f;
+    color: #38bdf8;
+    transform: translateX(5px);
+}
+
+/* Sidebar Footer */
+
+.sidebar-footer {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #25314b;
+    text-align: center;
+}
+
+.sidebar-footer p {
+    color: #94a3b8;
+    margin-bottom: 15px;
+}
+
+.sidebar-footer a {
+    display: inline-block;
+    color: #38bdf8;
+    margin: 5px 8px;
+}
+
+/* Mobile Responsive */
+
+@media(max-width: 900px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+}
         /* EXPERIENCE SECTION */
 
 .experience-grid {
@@ -500,29 +687,107 @@
 
     <!-- NAVBAR -->
 
-    <header>
-        <div class="container">
+   <!-- NAVBAR -->
 
-            <nav>
+<header>
+    <div class="container">
 
-                <div class="logo">
-                    Madan<span>.</span>
-                </div>
+        <nav class="navbar">
 
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
+            <div class="logo">
+                Madan<span>.</span>
+            </div>
 
-            </nav>
+            <!-- Desktop Menu -->
 
-        </div>
-    </header>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#certificates">Certificates</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <!-- Mobile Menu Button -->
+
+            <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+                ☰
+            </button>
+
+        </nav>
+
+    </div>
+</header>
+
+
+<!-- SIDEBAR -->
+
+<div class="overlay" id="overlay"></div>
+
+<aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-header">
+
+        <h2>Madan<span>.</span></h2>
+
+        <button class="close-btn" id="closeBtn" aria-label="Close menu">
+            &times;
+        </button>
+
+    </div>
+
+    <!-- Profile Information -->
+
+    <div class="sidebar-profile">
+
+        <img src="photo.png" alt="Madan Gowda S P">
+
+        <h3>Madan Gowda S P</h3>
+
+        <p>Assistant Professor</p>
+
+        <span>Software Developer</span>
+
+    </div>
+
+    <!-- Sidebar Navigation -->
+
+    <ul class="sidebar-links">
+
+        <li><a href="#home">🏠 <span>Home</span></a></li>
+
+        <li><a href="#about">👤 <span>About Me</span></a></li>
+
+        <li><a href="#skills">💻 <span>Technical Skills</span></a></li>
+
+        <li><a href="#experience">💼 <span>Experience</span></a></li>
+
+        <li><a href="#projects">🚀 <span>Projects</span></a></li>
+
+        <li><a href="#education">🎓 <span>Education</span></a></li>
+
+        <li><a href="#certificates">📜 <span>Certificates</span></a></li>
+
+        <li><a href="#contact">📞 <span>Contact</span></a></li>
+
+    </ul>
+
+    <div class="sidebar-footer">
+
+        <p>Connect With Me</p>
+
+        <a href="https://linkedin.com/in/madan-gowda-s-p"
+           target="_blank">LinkedIn</a>
+
+        <a href="https://github.com/madanspgowda-dot"
+           target="_blank">GitHub</a>
+
+    </div>
+
+</aside>
 
 
     <!-- HERO SECTION -->
