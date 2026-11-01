@@ -695,6 +695,27 @@
     }
 }
 
+
+/* Profile photo full-view popup */
+.profile-photo-clickable { cursor: zoom-in; }
+.profile-photo-modal {
+    display: none; position: fixed; inset: 0; z-index: 5000;
+    background: rgba(0, 0, 0, 0.92); align-items: center;
+    justify-content: center; padding: 60px 18px 24px;
+}
+.profile-photo-modal.active { display: flex; }
+.profile-photo-modal img {
+    display: block; max-width: min(92vw, 900px); max-height: 82vh;
+    width: auto; height: auto; object-fit: contain; border-radius: 12px;
+    box-shadow: 0 12px 40px rgba(0,0,0,.45);
+}
+.profile-photo-close {
+    position: absolute; top: 16px; right: 20px; width: 46px; height: 46px;
+    border: 0; border-radius: 50%; background: #fff; color: #111;
+    font-size: 30px; line-height: 1; cursor: pointer;
+}
+.profile-photo-close:hover { background: #e5e5e5; }
+
 </style>
 
 </head>
@@ -759,7 +780,7 @@
 
     <div class="sidebar-profile">
 
-        <img src="photo.png" alt="Madan Gowda S P">
+        <img src="photo.png" alt="Madan Gowda S P" class="profile-photo-clickable" tabindex="0" role="button" aria-label="View full profile photo">
 
         <h3>Madan Gowda S P</h3>
 
@@ -847,7 +868,7 @@
 
 
   <div class="hero-image">
-    <img src="photo.png" alt="Madan Gowda S P">
+    <img src="photo.png" alt="Madan Gowda S P" class="profile-photo-clickable" tabindex="0" role="button" aria-label="View full profile photo">
 </div>
 
     </section>
@@ -1310,6 +1331,13 @@
 
 
 
+
+    <!-- Full-size profile photo popup -->
+    <div class="profile-photo-modal" id="profilePhotoModal" role="dialog" aria-modal="true" aria-label="Full-size profile photo">
+        <button type="button" class="profile-photo-close" id="profilePhotoClose" aria-label="Close photo">&times;</button>
+        <img src="photo.png" alt="Madan Gowda S P - full-size profile photo">
+    </div>
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const menuBtn = document.getElementById("menuBtn");
@@ -1346,6 +1374,41 @@
 
             document.addEventListener("keydown", function (event) {
                 if (event.key === "Escape") closeSidebar();
+            });
+
+            // Open the full-size profile photo when either profile image is tapped.
+            const photoModal = document.getElementById("profilePhotoModal");
+            const photoClose = document.getElementById("profilePhotoClose");
+            const fullPhoto = photoModal ? photoModal.querySelector("img") : null;
+
+            function closePhotoModal() {
+                if (photoModal) photoModal.classList.remove("active");
+                document.body.style.overflow = "";
+            }
+
+            document.querySelectorAll(".profile-photo-clickable").forEach(function (photo) {
+                photo.addEventListener("click", function () {
+                    if (!photoModal) return;
+                    if (fullPhoto) fullPhoto.src = photo.src;
+                    photoModal.classList.add("active");
+                    document.body.style.overflow = "hidden";
+                });
+                photo.addEventListener("keydown", function (event) {
+                    if (event.key === "Enter" || event.key === " ") {
+                        event.preventDefault();
+                        photo.click();
+                    }
+                });
+            });
+
+            if (photoClose) photoClose.addEventListener("click", closePhotoModal);
+            if (photoModal) {
+                photoModal.addEventListener("click", function (event) {
+                    if (event.target === photoModal) closePhotoModal();
+                });
+            }
+            document.addEventListener("keydown", function (event) {
+                if (event.key === "Escape") closePhotoModal();
             });
         });
     </script>
