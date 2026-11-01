@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Madan Gowda S P | Portfolio</title>
+
+    <style>
+        /* EXPERIENCE SECTION */
+
+.experience-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.experience-card {
+    background: #111a2e;
+    padding: 30px;
+    border: 1px solid #25314b;
+    border-left: 4px solid #38bdf8;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.experience-card:hover {
+    transform: translateY(-8px);
+    border-color: #38bdf8;
+    box-shadow: 0 10px 30px rgba(56,189,248,0.12);
+}
+
+.experience-icon {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.experience-card h3 {
+    color: #38bdf8;
+    font-size: 23px;
+    margin-bottom: 5px;
+}
+
+.experience-card h4 {
+    color: white;
+    margin-bottom: 15px;
+}
+
+.duration {
+    display: inline-block;
+    background: #1e3a5f;
+    color: #38bdf8;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    margin-bottom: 18px;
+}
+
+.experience-card p,
+.experience-card li {
+    color: #cbd5e1;
+    line-height: 1.8;
+}
+
+.experience-card ul {
+    padding-left: 20px;
+    margin-top: 12px;
+}
+
+@media(max-width: 700px) {
+    .experience-grid {
+        grid-template-columns: 1fr;
+    }
+}
+        /* ===== GLOBAL CSS ===== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #0b1120;
+            color: white;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* ===== NAVBAR ===== */
+
+        header {
+            background: #111a2e;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #25314b;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #cbd5e1;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        /* ===== HERO SECTION ===== */
+
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            padding: 70px 0;
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .hero-content h4 {
+            color: #38bdf8;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .hero-content h1 {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .hero-content h1 span {
+            color: #38bdf8;
+        }
+
+        .hero-content h2 {
+            font-size: 27px;
+            color: #94a3b8;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            color: #cbd5e1;
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+        .buttons {
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 25px;
+            background: #38bdf8;
+            color: #0b1120;
+            border-radius: 6px;
+            font-weight: bold;
+            margin-right: 10px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #0ea5e9;
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #38bdf8;
+            border: 2px solid #38bdf8;
+        }
+
+        .btn-outline:hover {
+            background: #38bdf8;
+            color: #0b1120;
+        }
+
+        .hero-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #38bdf8, #6366f1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 90px;
+            font-weight: bold;
+            color: #0b1120;
+            box-shadow: 0 0 50px rgba(56,189,248,0.3);
+        }
+
+        /* ===== COMMON SECTION ===== */
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 35px;
+            color: #38bdf8;
+        }
+
+        .section-title p {
+            color: #94a3b8;
+            margin-top: 10px;
+        }
+
+        /* ===== ABOUT ===== */
+
+        .about-content {
+            background: #111a2e;
+            padding: 35px;
+            border-radius: 12px;
+            border: 1px solid #25314b;
+        }
+
+        .about-content p {
+            color: #cbd5e1;
+            line-height: 1.9;
+            font-size: 17px;
+            margin-bottom: 15px;
+        }
+
+        /* ===== SKILLS ===== */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: #111a2e;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #25314b;
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-7px);
+            border-color: #38bdf8;
+        }
+
+        .skill-card h3 {
+            color: #38bdf8;
+            margin-bottom: 15px;
+        }
+
+        .skill-card p {
+            color: #cbd5e1;
+            line-height: 2;
+        }
+
+        /* ===== EXPERIENCE ===== */
+
+        .experience-card {
+            background: #111a2e;
+            padding: 30px;
+            border-left: 4px solid #38bdf8;
+            border-radius: 8px;
+        }
+
+        .experience-card h3 {
+            color: #38bdf8;
+            margin-bottom: 10px;
+        }
+
+        .experience-card p {
+            color: #cbd5e1;
+            line-height: 1.9;
+        }
+
+        /* ===== PROJECTS ===== */
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .project-card {
+            background: #111a2e;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #25314b;
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-7px);
+            border-color: #38bdf8;
+        }
+
+        .project-card h3 {
+            color: #38bdf8;
+            margin-bottom: 12px;
+        }
+
+        .project-card p {
+            color: #cbd5e1;
+            line-height: 1.8;
+        }
+
+        .project-card span {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 5px 12px;
+            background: #1e3a5f;
+            color: #38bdf8;
+            border-radius: 20px;
+            font-size: 13px;
+        }
+
+        /* ===== EDUCATION ===== */
+
+        .education-card {
+            background: #111a2e;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 4px solid #38bdf8;
+            border-radius: 8px;
+        }
+
+        .education-card h3 {
+            color: #38bdf8;
+        }
+
+        .education-card p {
+            color: #cbd5e1;
+            margin-top: 8px;
+        }
+
+        /* ===== CERTIFICATES ===== */
+
+        .certificate-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .certificate-card {
+            background: #111a2e;
+            padding: 25px;
+            text-align: center;
+            border-radius: 10px;
+            border: 1px solid #25314b;
+        }
+
+        .certificate-card h3 {
+            color: #38bdf8;
+        }
+
+        /* ===== CONTACT ===== */
+
+        .contact-box {
+            background: #111a2e;
+            padding: 35px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .contact-box p {
+            color: #cbd5e1;
+            margin: 15px 0;
+            line-height: 1.8;
+        }
+
+        .contact-box a {
+            color: #38bdf8;
+        }
+
+        /* ===== FOOTER ===== */
+
+        footer {
+            background: #111a2e;
+            text-align: center;
+            padding: 25px;
+            color: #94a3b8;
+            border-top: 1px solid #25314b;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+
+        @media(max-width: 900px) {
+
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 40px;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media(max-width: 600px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-image {
+                width: 200px;
+                height: 200px;
+                font-size: 60px;
+            }
+
+            .hero-content h1 {
+                font-size: 35px;
+            }
+
+            .hero-content h2 {
+                font-size: 21px;
+            }
+
+            .skills-grid,
+            .projects-grid,
+            .certificate-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title h2 {
+                font-size: 28px;
+            }
+
+        }
+.hero-image {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    padding: 6px;
+    background: linear-gradient(135deg, #38bdf8, #6366f1);
+    box-shadow: 0 0 40px rgba(56, 189, 248, 0.4);
+    overflow: hidden;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+}
+    </style>
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header>
+        <div class="container">
+
+            <nav>
+
+                <div class="logo">
+                    Madan<span>.</span>
+                </div>
+
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+
+            </nav>
+
+        </div>
+    </header>
+
+
+    <!-- HERO SECTION -->
+
+    <section class="container hero" id="home">
+
+        <div class="hero-content">
+
+            <h4>Hello, I'm</h4>
+
+            <h1>
+                Madan Gowda <span>S P</span>
+            </h1>
+
+            <h2>
+                Assistant Professor | Software Developer
+            </h2>
+
+            <p>
+                Passionate Computer Applications professional with
+                6 months of teaching experience and a strong foundation
+                in Java, Python, Web Development and Database Systems.
+
+                I enjoy teaching students, building applications
+                and solving real-world problems through technology.
+            </p>
+
+            <div class="buttons">
+
+                <a href="#contact" class="btn">
+                    Contact Me
+                </a>
+
+                <a href="#projects" class="btn btn-outline">
+                    View Projects
+                </a>
+
+            </div>
+
+        </div>
+
+
+  <div class="hero-image">
+    <img src="photo.png" alt="Madan Gowda S P">
+</div>
+
+    </section>
+
+
+    <!-- ABOUT SECTION -->
+
+    <section id="about">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>About Me</h2>
+
+                <p>Know more about me</p>
+
+            </div>
+
+
+            <div class="about-content">
+
+                <p>
+                    I am Madan Gowda S P, a dedicated Computer
+                    Applications professional with a Master of
+                    Computer Applications (MCA) qualification.
+                </p>
+
+                <p>
+                    I have 6 months of experience as an Assistant
+                    Professor, teaching Computer Science subjects
+                    to BCA students. I enjoy explaining technical
+                    concepts in a simple and understandable way.
+                </p>
+
+                <p>
+                    My technical interests include Java, Python,
+                    HTML, CSS, JavaScript, React and MySQL.
+                    I am passionate about continuous learning,
+                    software development and academic excellence.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SKILLS SECTION -->
+
+    <section id="skills">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>My Technical Skills</h2>
+
+                <p>Technologies and tools I work with</p>
+
+            </div>
+
+
+            <div class="skills-grid">
+
+                <div class="skill-card">
+
+                    <h3>Programming Languages</h3>
+
+                    <p>
+                        Java<br>
+                        Python<br>
+                        C
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card">
+
+                    <h3>Frontend Technologies</h3>
+
+                    <p>
+                        HTML5<br>
+                        CSS3<br>
+                        JavaScript<br>
+                        React
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card">
+
+                    <h3>Database</h3>
+
+                    <p>
+                        MySQL
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card">
+
+                    <h3>Core Concepts</h3>
+
+                    <p>
+                        Object-Oriented Programming<br>
+                        Data Structures<br>
+                        MVC Architecture
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card">
+
+                    <h3>Backend Technologies</h3>
+
+                    <p>
+                        Core Java
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card">
+
+                    <h3>Tools & Platforms</h3>
+
+                    <p>
+                        Git<br>
+                        GitHub<br>
+                        Maven
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- EXPERIENCE SECTION -->
+
+   <!-- EXPERIENCE SECTION -->
+
+<section id="experience">
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Professional Experience</h2>
+            <p>My professional journey and industry experience</p>
+        </div>
+
+        <div class="experience-grid">
+
+            <!-- Assistant Professor -->
+
+            <div class="experience-card">
+
+                <div class="experience-icon">🎓</div>
+
+                <h3>Assistant Professor</h3>
+
+                <h4>Computer Applications</h4>
+
+                <span class="duration">6 Months Experience</span>
+
+                <p>
+                    Worked as an Assistant Professor, teaching
+                    Computer Science subjects to BCA students.
+                </p>
+
+                <ul>
+                    <li>Prepared lesson plans and study materials.</li>
+                    <li>Conducted interactive classroom sessions.</li>
+                    <li>Explained technical concepts in a simple manner.</li>
+                    <li>Guided students in practical learning.</li>
+                </ul>
+
+            </div>
+
+
+            <!-- IoT Internship -->
+
+            <div class="experience-card">
+
+                <div class="experience-icon">💻</div>
+
+                <h3>IoT Intern</h3>
+
+                <h4>Techno Anveshna</h4>
+
+                <span class="duration">3 Months Internship</span>
+
+                <p>
+                    Completed a 3-month internship in Internet
+                    of Things (IoT) at Techno Anveshna.
+                </p>
+
+                <ul>
+                    <li>Gained practical exposure to IoT concepts.</li>
+                    <li>Learned about hardware and software interaction.</li>
+                    <li>Explored sensor-based applications.</li>
+                    <li>Developed technical and problem-solving skills.</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+    <!-- PROJECTS SECTION -->
+
+    <section id="projects">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>My Projects</h2>
+
+                <p>Academic and technical projects</p>
+
+            </div>
+
+
+            <div class="projects-grid">
+
+
+                <div class="project-card">
+
+                    <h3>Automated Locking System Using LDR Sensor</h3>
+
+                    <p>
+                        Designed an automated locking mechanism
+                        using LDR sensors for enhanced security.
+                        Implemented hardware-software interaction
+                        using IoT concepts.
+                    </p>
+
+                    <span>Internship Project</span>
+
+                </div>
+
+
+                <div class="project-card">
+
+                    <h3>Grow Wise Academy</h3>
+
+                    <p>
+                        Developed a platform concept to support
+                        learning and skill development.
+                        Worked on system planning and feature design.
+                    </p>
+
+                    <span>Societal Project</span>
+
+                </div>
+
+
+                <div class="project-card">
+
+                    <h3>Indian Laptop Analysis</h3>
+
+                    <p>
+                        Performed data analysis on Indian laptop
+                        market pricing using Python libraries
+                        such as Pandas and NumPy.
+                    </p>
+
+                    <span>Python Mini Project</span>
+
+                </div>
+
+
+                <div class="project-card">
+
+                    <h3>Smart Locker System</h3>
+
+                    <p>
+                        Designed a smart locker system using
+                        IoT concepts and implemented secure
+                        access control mechanisms.
+                    </p>
+
+                    <span>IoT Mini Project</span>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- EDUCATION SECTION -->
+
+    <section id="education">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>Education</h2>
+
+                <p>My academic qualifications</p>
+
+            </div>
+
+
+            <div class="education-card">
+
+                <h3>Master of Computer Applications (MCA)</h3>
+
+                <p>Cauvery Institute of Technology, Mandya</p>
+
+                <p>CGPA: 8.89</p>
+
+            </div>
+
+
+            <div class="education-card">
+
+                <h3>Bachelor of Computer Applications (BCA)</h3>
+
+                <p>Mandya University, Mandya</p>
+
+                <p>CGPA: 7.35</p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CERTIFICATES SECTION -->
+
+    <section id="certificates">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>Certificates</h2>
+
+                <p>My certifications</p>
+
+            </div>
+
+
+            <div class="certificate-grid">
+
+                <div class="certificate-card">
+
+                    <h3>Cyber Security and Privacy</h3>
+
+                </div>
+
+
+                <div class="certificate-card">
+
+                    <h3>IoT and Robotics</h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT SECTION -->
+
+    <section id="contact">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>Contact Me</h2>
+
+                <p>Let's connect and work together</p>
+
+            </div>
+
+
+            <div class="contact-box">
+
+                <h2>Madan Gowda S P</h2>
+
+                <p>
+                    📍 Mandya, Karnataka
+                </p>
+
+                <p>
+                    📧
+                    <a href="mailto:madangowdasp1@gmail.com">
+                        madangowdasp1@gmail.com
+                    </a>
+                </p>
+
+                <p>
+                    📞
+                    <a href="tel:+917996487067">
+                        +91 7996487067
+                    </a>
+                </p>
+
+                <p>
+                    LinkedIn:
+                    <a href="https://linkedin.com/in/madan-gowda-s-p"
+                       target="_blank">
+                        View LinkedIn Profile
+                    </a>
+                </p>
+
+                <p>
+                    GitHub:
+                    <a href="https://github.com/madanspgowda-dot"
+                       target="_blank">
+                        View GitHub Profile
+                    </a>
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 Madan Gowda S P.
+            All Rights Reserved.
+        </p>
+
+        <p>
+            Designed with HTML & CSS
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
