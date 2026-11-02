@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Smart Locker System project developed under Cauvery Institute of Technology.">
+  <title>Smart Locker System | Project</title>
+<link rel="stylesheet" href="style.css">
+  <style>
+    /* Small additions for project images and content; the main theme comes from your CSS file. */
+    .project-hero-image {
+      width: min(100%, 390px); height: 290px; border-radius: 18px; overflow: hidden;
+      border: 2px solid #38bdf8; box-shadow: 0 0 35px rgba(56,189,248,.2);
+      background: #111a2e; display: grid; place-items: center; color: #94a3b8;
+    }
+    .project-hero-image img { width:100%; height:100%; object-fit:cover; }
+    .photo-frame {
+      width:100%; height:190px; border-radius:9px; overflow:hidden;
+      background:#0b1120; border:1px solid #25314b; margin-bottom:17px;
+      display:grid; place-items:center; color:#94a3b8; text-align:center; padding:12px;
+    }
+    .photo-frame img { width:100%; height:100%; object-fit:contain; }
+    .component-card h3 { margin-bottom:8px; }
+    .component-card p { color:#cbd5e1; line-height:1.8; }
+    .tag-row { display:flex; flex-wrap:wrap; gap:9px; margin-top:18px; }
+    .tag-row span { background:#1e3a5f; color:#38bdf8; padding:6px 12px; border-radius:20px; font-size:13px; }
+    .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .step { background:#111a2e; border:1px solid #25314b; padding:22px; border-radius:10px; }
+    .step b { color:#38bdf8; display:block; font-size:1.1rem; margin-bottom:8px; }
+    .certificate-image { width:100%; max-height:420px; object-fit:contain; margin:18px 0; border-radius:8px; background:#0b1120; }
+    .note { color:#94a3b8; font-size:13px; margin-top:12px; }
+    .sidebar .sidebar-profile img { cursor:zoom-in; }
+    .sidebar-links a { display:flex; }
+    .section-title { scroll-margin-top:95px; }
+    @media(max-width:900px) {
+      .steps { grid-template-columns:1fr; }
+      .project-hero-image { height:230px; }
+    }
+  
+  /* Full-screen image preview */
+  .image-viewer {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 5000;
+    background: rgba(0, 0, 0, .94);
+    align-items: center;
+    justify-content: center;
+    padding: 70px 20px 24px;
+  }
+  .image-viewer.active { display: flex; }
+  .image-viewer img {
+    display: block;
+    max-width: min(94vw, 1200px);
+    max-height: 84vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 12px 40px rgba(0,0,0,.5);
+  }
+  .image-viewer-close {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    min-width: 46px;
+    min-height: 46px;
+    border: 0;
+    border-radius: 50%;
+    background: #fff;
+    color: #111;
+    font-size: 30px;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .image-viewer-close:hover { background: #dbeafe; }
+  .photo-frame img, .project-hero-image img, .certificate-image { cursor: zoom-in; }
+  @media (max-width: 600px) {
+    .image-viewer { padding: 70px 10px 18px; }
+    .image-viewer img { max-width: 96vw; max-height: 82vh; }
+    .image-viewer-close { top: 12px; right: 12px; }
+  }
+
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <a class="logo" href="#home">MY <span>PROJECT</span></a>
+      <ul class="nav-links">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#components">Components</a></li>
+        <li><a href="#working">Working</a></li>
+       
+      </ul>
+      <button class="menu-btn" id="openMenu" aria-label="Open menu" aria-expanded="false">☰</button>
+    </nav>
+  </div>
+</header>
+
+<!-- Mobile sidebar -->
+<div class="overlay" id="overlay"></div>
+<aside class="sidebar" id="sidebar" aria-label="Mobile navigation">
+  <div class="sidebar-header">
+    <h2>Project <span>Menu</span></h2>
+    <button class="close-btn" id="closeMenu" aria-label="Close menu">&times;</button>
+  </div>
+  <div class="sidebar-profile">
+    <img src="project-photo.jpg" alt="Project prototype" onerror="this.style.display='none'">
+    <h3>Smart Locker System</h3>
+    <p>IoT Project Presentation · 2025</p>
+    <span>Developed under Cauvery Institute of Technology</span>
+  </div>
+  <ul class="sidebar-links">
+    <li><a href="#home">⌂ <span>Home</span></a></li>
+    <li><a href="#overview">▣ <span>Project Overview</span></a></li>
+    <li><a href="#components">⚙ <span>Components</span></a></li>
+    <li><a href="#working">⇢ <span>Working Process</span></a></li>
+    <li><a href="#technology">⌘ <span>Technology</span></a></li>
+    
+  </ul>
+  <div class="sidebar-footer">
+    <p>Project developed under</p>
+    <strong>Cauvery Institute of Technology</strong>
+  </div>
+</aside>
+
+<main>
+  <section class="hero container" id="home">
+    <div class="hero-content">
+      <h4>PROJECT PRESENTATION · TECHNOANVESHA</h4>
+      <h1>SMART <span>LOCKER SYSTEM</span></h1>
+      <h2>Smart Locker Security System</h2>
+      <p>
+        An IoT-based smart locker project designed to improve security.
+        The system uses an laser light receiver to detect an interruption or change in
+        light. When an unexpected interruption is detected, the system activates
+        an alert and sends a notification to a mobile phone through Bluetooth.
+      </p>
+      <div class="buttons">
+        <a href="#overview" class="btn">Explore Project</a>
+        <a href="#components" class="btn btn-outline">View Components</a>
+      </div>
+      <div class="tag-row">
+        <span>Embedded C</span><span>Arduino</span><span>Laser Light Receiver</span><span>Bluetooth</span>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="container" id="overview">
+    <div class="section-title">
+      <h2>Project Overview</h2>
+      <p>Purpose, objective and basic information about the project.</p>
+    </div>
+    <div class="about-content">
+      <p><strong>Project title:</strong> Smart Locker System</p>
+      <p><strong>Institute:</strong> Cauvery Institute of Technology</p>
+      <p><strong>Programming language:</strong> Embedded C</p>
+      <p><strong>Software / IDE:</strong> Arduino IDE</p>
+      <p><strong>Aim:</strong> To provide additional security for a locker by detecting an unexpected interruption using an laser light receiver and sending an alert message to a mobile phone through Bluetooth.</p>
+      <p>
+        The laser light receiver responds to changes in light intensity. The Arduino board
+        reads the sensor input and controls the connected output devices. If the
+        programmed condition for an interruption is detected, the system can
+        activate the buzzer and communicate an alert to a paired mobile phone
+        using the Bluetooth module.
+      </p>
+      <div class="tag-row">
+        <span>Locker protection</span><span>Sensor-based detection</span>
+        <span>Mobile alert</span><span>Embedded system</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="container" id="components">
+    <div class="section-title">
+      <h2>Components Used</h2>
+      <p>Replace each sample filename with a photograph of the actual component used in your project.</p>
+    </div>
+    <div class="skills-grid">
+      <article class="skill-card component-card">
+        <div class="photo-frame"><img src="image/laser-light-receiver.jpg" alt="laser light receiver" onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','Laser Light Receiver photo<br><small>laser-light-receiver.jpg</small>')"></div>
+        <h3>1. Laser Light Receiver</h3>
+        <p>A laser light receiver module detects changes in light intensity. It provides an input signal to help identify an interruption near the locker.</p>
+      </article>
+      <article class="skill-card component-card">
+        <div class="photo-frame"><img src="image/arduino-board.jpg" alt="Arduino board" onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','Arduino board photo<br><small>arduino-board.jpg</small>')"></div>
+        <h3>2. Arduino Board</h3>
+        <p>The main controller of the project. It reads the sensor input, processes the programmed instructions and controls connected components.</p>
+      </article>
+      <article class="skill-card component-card">
+        <div class="photo-frame"><img src="image/servo-motor.jpg" alt="Servo motor" onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','Servo motor photo<br><small>servo-motor.jpg</small>')"></div>
+        <h3>3. Servo Motor</h3>
+        <p>Provides controlled rotational movement and can be used to operate the locking mechanism according to the Arduino program.</p>
+      </article>
+      <article class="skill-card component-card">
+        <div class="photo-frame"><img src="image/buzzer.jpg" alt="Buzzer" onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','Buzzer photo<br><small>buzzer.jpg</small>')"></div>
+        <h3>4. Buzzer</h3>
+        <p>Produces an audible alert when the system detects the programmed interruption or security condition.</p>
+      </article>
+      <article class="skill-card component-card">
+        <div class="photo-frame"><img src="image/jumper-wires.jpg" alt="Jumper wires" onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','Jumper wires photo<br><small>jumper-wires.jpg</small>')"></div>
+        <h3>5. Jumper Wires</h3>
+        <p>Used to make electrical connections between the Arduino board, sensors and other electronic components.</p>
+      </article>
+      <article class="skill-card component-card">
+        <div class="photo-frame"><img src="image/breadboard.jpg" alt="Breadboard" onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','Breadboard photo<br><small>breadboard.jpg</small>')"></div>
+        <h3>6. Breadboard</h3>
+        <p>Allows components to be connected and tested without soldering, making it useful for building the prototype circuit.</p>
+      </article>
+      <article class="skill-card component-card">
+        <div class="photo-frame"><img src="image/bluetooth-module.jpg" alt="Bluetooth module" onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','Bluetooth module photo<br><small>bluetooth-module.jpg</small>')"></div>
+        <h3>7. Bluetooth Module</h3>
+        <p>Provides wireless communication between the Arduino-based system and a paired mobile phone to transmit alert information.</p>
+      </article>
+      <article class="skill-card component-card">
+        <div class="photo-frame"><img src="image/usb-cable.jpg" alt="USB cable or port" onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','USB cable / port photo<br><small>usb-cable.jpg</small>')"></div>
+        <h3>8. USB Port / Cable</h3>
+        <p>Used to connect the Arduino board to a computer for uploading the program and, where supported, supplying power.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="container" id="working">
+    <div class="section-title">
+      <h2>Working Process</h2>
+      <p>Basic sequence of how the locker security system operates.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><b>01 · Sense</b><p>The laser light receiver monitors light intensity near the protected locker area.</p></div>
+      <div class="step"><b>02 · Process & Alert</b><p>The Arduino reads the sensor value. When the set interruption condition is met, it activates the buzzer and controls the servo motor as programmed.</p></div>
+      <div class="step"><b>03 · Notify</b><p>The Bluetooth module sends alert information to a paired mobile phone.</p></div>
+    </div>
+    <div class="about-content" style="margin-top:22px">
+      <p><strong>Note:</strong> The exact alert text, sensor threshold and servo movement depend on the Embedded C program and circuit configuration used in the prototype.</p>
+    </div>
+  </section>
+
+  <section class="container" id="technology">
+    <div class="section-title">
+      <h2>Programming & Software</h2>
+      <p>Tools used to develop and program the project.</p>
+    </div>
+    <div class="projects-grid">
+      <article class="project-card">
+        <h3>Embedded C</h3>
+        <p>Used to write the instructions that read the laser light receiver, control the buzzer and servo motor, and manage Bluetooth communication.</p>
+        <span>Programming language</span>
+      </article>
+      <article class="project-card">
+        <h3>Arduino IDE</h3>
+        <p>Used to write, compile and upload the program to the Arduino board through a USB connection.</p>
+        <span>Development software</span>
+      </article>
+    </div>
+  </section>
+
+  
+  
+
+  <section class="container" id="conclusion">
+    <div class="section-title"><h2>Conclusion</h2></div>
+    <div class="about-content">
+      <p>The Smart Locker System demonstrates how sensors, a microcontroller, an audible alarm and wireless communication can be combined for locker security. The project provides an alert to a paired mobile phone through Bluetooth when the programmed interruption condition is detected.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>Smart Locker System · IoT project presentation · 2025 · Cauvery Institute of Technology</p>
+</footer>
+
+
+<div class="image-viewer" id="imageViewer" role="dialog" aria-modal="true" aria-label="Full-screen image preview">
+  <button class="image-viewer-close" id="closeImageViewer" type="button" aria-label="Close image preview">&times;</button>
+  <img id="imageViewerPhoto" src="" alt="Full-size image preview">
+</div>
+
+<script>
+
+  // Open any successfully loaded project image in a full-screen preview.
+  const imageViewer = document.getElementById('imageViewer');
+  const imageViewerPhoto = document.getElementById('imageViewerPhoto');
+  const closeImageViewer = document.getElementById('closeImageViewer');
+
+  function openImageViewer(image) {
+    if (!image || !image.complete || !image.naturalWidth) return;
+    imageViewerPhoto.src = image.currentSrc || image.src;
+    imageViewerPhoto.alt = image.alt || 'Full-size project image';
+    imageViewer.classList.add('active');
+    closeImageViewer.focus();
+  }
+
+  function hideImageViewer() {
+    imageViewer.classList.remove('active');
+    imageViewerPhoto.src = '';
+  }
+
+  document.querySelectorAll('img').forEach(image => {
+    if (image.id !== 'imageViewerPhoto') {
+      image.addEventListener('click', () => openImageViewer(image));
+    }
+  });
+
+  closeImageViewer.addEventListener('click', hideImageViewer);
+  imageViewer.addEventListener('click', event => {
+    if (event.target === imageViewer) hideImageViewer();
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && imageViewer.classList.contains('active')) {
+      hideImageViewer();
+    }
+  });
+
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+  const openMenu = document.getElementById('openMenu');
+  const closeMenu = document.getElementById('closeMenu');
+
+  function showMenu() {
+    sidebar.classList.add('active');
+    overlay.classList.add('active');
+    openMenu.setAttribute('aria-expanded', 'true');
+  }
+  function hideMenu() {
+    sidebar.classList.remove('active');
+    overlay.classList.remove('active');
+    openMenu.setAttribute('aria-expanded', 'false');
+  }
+  openMenu.addEventListener('click', showMenu);
+  closeMenu.addEventListener('click', hideMenu);
+  overlay.addEventListener('click', hideMenu);
+  document.querySelectorAll('.sidebar-links a').forEach(link => {
+    link.addEventListener('click', hideMenu);
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') hideMenu();
+  });
+</script>
+</body>
+</html>

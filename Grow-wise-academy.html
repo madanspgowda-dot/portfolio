@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Grow Wise Academy | Project</title>
+
+    <!-- Your existing CSS file -->
+  <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Additional project styles */
+
+        .project-hero-image,
+        .photo-frame {
+            background: #0b1120;
+            border: 1px solid #25314b;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            color: #94a3b8;
+            text-align: center;
+            padding: 12px;
+            overflow: hidden;
+        }
+
+        .project-hero-image {
+            width: min(100%, 390px);
+            height: 290px;
+        }
+
+        .project-hero-image img,
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            cursor: zoom-in;
+        }
+
+        .photo-frame {
+            height: 180px;
+            margin-bottom: 16px;
+        }
+
+        .tech-card p {
+            color: #cbd5e1;
+            line-height: 1.8;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .step {
+            background: #111a2e;
+            border: 1px solid #25314b;
+            padding: 22px;
+            border-radius: 10px;
+        }
+
+        .step b {
+            color: #38bdf8;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            color: #cbd5e1;
+        }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-top: 18px;
+        }
+
+        .tag-row span {
+            background: #1e3a5f;
+            color: #38bdf8;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+        }
+
+        .note {
+            color: #94a3b8;
+            font-size: 13px;
+            margin-top: 12px;
+        }
+
+        .screen-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            cursor: zoom-in;
+            margin: 16px 0;
+        }
+
+        /* Full-screen image preview */
+
+        .image-viewer {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 5000;
+            background: rgba(0, 0, 0, 0.94);
+            align-items: center;
+            justify-content: center;
+            padding: 70px 20px 24px;
+        }
+
+        .image-viewer.active {
+            display: flex;
+        }
+
+        .image-viewer img {
+            max-width: 94vw;
+            max-height: 84vh;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .image-viewer-close {
+            position: absolute;
+            top: 18px;
+            right: 22px;
+            width: 46px;
+            height: 46px;
+            border: none;
+            border-radius: 50%;
+            background: white;
+            color: #111;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        @media(max-width: 900px) {
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .project-hero-image {
+                height: 230px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- NAVIGATION BAR -->
+
+    <header>
+
+        <div class="container">
+
+            <nav>
+
+                <a class="logo" href="#home">
+                    GROW <span>WISE</span>
+                </a>
+
+                <ul class="nav-links">
+
+                    <li><a href="#overview">Overview</a></li>
+
+                    <li><a href="#technology">Technology</a></li>
+
+                    <li><a href="#development">Development</a></li>
+
+                    <li><a href="#screenshots">Screenshots</a></li>
+
+                    <li><a href="#project-links">Project Links</a></li>
+
+                </ul>
+
+                <button class="menu-btn"
+                    id="openMenu"
+                    aria-label="Open menu">
+                    ☰
+                </button>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- MOBILE SIDEBAR -->
+
+    <div class="overlay" id="overlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-header">
+
+            <h2>Project <span>Menu</span></h2>
+
+            <button class="close-btn"
+                id="closeMenu">
+                &times;
+            </button>
+
+        </div>
+
+        <div class="sidebar-profile">
+
+            <img src="grow-wise-homepage.jpg"
+                alt="Grow Wise Academy">
+
+            <h3>Grow Wise Academy</h3>
+
+            <p>Web Development Project</p>
+
+            <span>Frontend & Backend</span>
+
+        </div>
+
+        <ul class="sidebar-links">
+
+            <li><a href="#home">⌂ <span>Home</span></a></li>
+
+            <li><a href="#overview">▣ <span>Overview</span></a></li>
+
+            <li><a href="#technology">⌘ <span>Technology</span></a></li>
+
+            <li><a href="#development">⇢ <span>Development</span></a></li>
+
+            <li><a href="#screenshots">▤ <span>Screenshots</span></a></li>
+
+            <li><a href="#project-links">↗ <span>Project Links</span></a></li>
+
+        </ul>
+
+        <div class="sidebar-footer">
+
+            <p>Web Development Project</p>
+
+            <strong>Grow Wise Academy</strong>
+
+        </div>
+
+    </aside>
+
+
+    <main>
+
+        <!-- HOME SECTION -->
+
+        <section class="hero container" id="home">
+
+            <div class="hero-content">
+
+                <h4>WEB DEVELOPMENT PROJECT</h4>
+
+                <h1>
+                    <span>GROW WISE</span> ACADEMY
+                </h1>
+
+                <h2>
+                    Digital Learning & Study Resources Platform
+                </h2>
+
+                <p>
+                    Grow Wise Academy is an educational web application
+                    designed to support students in their learning.
+
+                    It provides textbooks, study materials and educational
+                    videos to help students improve their knowledge.
+
+                    Students can also find contact information and share
+                    their opinions through the feedback option.
+
+                    The frontend is developed using HTML, CSS and JavaScript,
+                    while PHP is used for backend development.
+                    XAMPP is used as the local development environment.
+                </p>
+
+                <div class="buttons">
+
+                    <a href="#overview" class="btn">
+                        Explore Project
+                    </a>
+
+                    <a href="#technology" class="btn btn-outline">
+                        View Technologies
+                    </a>
+
+                </div>
+
+                <div class="tag-row">
+
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                    <span>PHP</span>
+                    <span>XAMPP</span>
+
+                </div>
+
+            </div>
+
+
+
+        </section>
+
+
+        <!-- PROJECT OVERVIEW -->
+
+        <section class="container" id="overview">
+
+            <div class="section-title">
+
+                <h2>Project Overview</h2>
+
+                <p>
+                    Introduction and development details of Grow Wise Academy.
+                </p>
+
+            </div>
+
+            <div class="about-content">
+
+                <p>
+                    <strong>Project Name:</strong>
+                    Grow Wise Academy
+                </p>
+
+                <p>
+                    <strong>Project Type:</strong>
+                    Educational Web Application
+                </p>
+
+                <p>
+                    <strong>Frontend:</strong>
+                    HTML, CSS and JavaScript
+                </p>
+
+                <p>
+                    <strong>Backend:</strong>
+                    PHP
+                </p>
+
+                <p>
+                    <strong>Local Development Environment:</strong>
+                    XAMPP
+                </p>
+
+                <p>
+                    The purpose of Grow Wise Academy is to make useful
+                    learning resources accessible to students in one place.
+
+                    The application provides textbooks and study materials,
+                    along with educational videos that help students
+                    enhance their knowledge.
+
+                    It also includes contact details so students can
+                    get in touch, and a feedback option where they can
+                    share their suggestions or experience.
+                </p>
+
+                <div class="tag-row">
+
+                    <span>Web Application</span>
+
+                    <span>Frontend Development</span>
+
+                    <span>Backend Development</span>
+
+                    <span>Student Learning Resources</span>
+
+                </div>
+
+                <div style="margin-top:24px">
+
+                    <h3 style="color:#38bdf8">
+                        Main Application Features
+                    </h3>
+
+                    <ul style="color:#cbd5e1;line-height:2;padding-left:22px">
+
+                        <li>
+                            Textbooks and study materials for students.
+                        </li>
+
+                        <li>
+                            Educational videos to support learning.
+                        </li>
+
+                        <li>
+                            Contact details for communication.
+                        </li>
+
+                        <li>
+                            Feedback option for students.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TECHNOLOGY SECTION -->
+
+        <section class="container" id="technology">
+
+            <div class="section-title">
+
+                <h2>Technology Stack</h2>
+
+                <p>
+                    Languages and tools used to develop the project.
+                </p>
+
+            </div>
+
+            <div class="skills-grid">
+
+                <!-- HTML -->
+
+                <article class="skill-card tech-card">
+
+
+                    <h3>1. HTML</h3>
+
+                    <p>
+                        HTML creates the structure of the website,
+                        including headings, forms, links, images
+                        and page sections.
+                    </p>
+
+                </article>
+
+
+                <!-- CSS -->
+
+                <article class="skill-card tech-card">
+
+
+
+                    <h3>2. CSS</h3>
+
+                    <p>
+                        CSS styles the website, arranges page elements,
+                        manages layouts and makes the interface
+                        visually appealing and responsive.
+                    </p>
+
+                </article>
+
+
+                <!-- JAVASCRIPT -->
+
+                <article class="skill-card tech-card">
+
+   
+
+                    <h3>3. JavaScript</h3>
+
+                    <p>
+                        JavaScript adds client-side behaviour
+                        and interactive features to the website.
+                    </p>
+
+                </article>
+
+
+                <!-- PHP -->
+
+                <article class="skill-card tech-card">
+
+
+                    <h3>4. PHP</h3>
+
+                    <p>
+                        PHP handles server-side programming
+                        and backend functionality, processing
+                        information sent from the website interface.
+                    </p>
+
+                </article>
+
+
+                <!-- XAMPP -->
+
+                <article class="skill-card tech-card">
+
+
+                    <h3>5. XAMPP</h3>
+
+                    <p>
+                        XAMPP provides a local server environment
+                        for running and testing the PHP-based website
+                        during development.
+                    </p>
+
+                </article>
+
+            </div>
+
+            <p class="note">
+                Note: XAMPP is a local server package.
+                It can provide database services through its
+                bundled MariaDB server.
+            </p>
+
+        </section>
+
+
+        <!-- DEVELOPMENT PROCESS -->
+
+        <section class="container" id="development">
+
+            <div class="section-title">
+
+                <h2>Development Process</h2>
+
+                <p>
+                    How the frontend and backend parts work together.
+                </p>
+
+            </div>
+
+            <div class="steps">
+
+                <div class="step">
+
+                    <b>01 · Frontend</b>
+
+                    <p>
+                        HTML creates the page structure,
+                        CSS styles the interface,
+                        and JavaScript adds interactive behaviour.
+                    </p>
+
+                </div>
+
+                <div class="step">
+
+                    <b>02 · Backend</b>
+
+                    <p>
+                        PHP handles server-side operations
+                        and processes information sent
+                        from the website interface.
+                    </p>
+
+                </div>
+
+                <div class="step">
+
+                    <b>03 · Local Testing</b>
+
+                    <p>
+                        XAMPP is used to run the PHP project
+                        locally and test the website
+                        during development.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SCREENSHOTS -->
+
+        <section class="container" id="screenshots">
+
+            <div class="section-title">
+
+                <h2>Website Screenshots</h2>
+
+                <p>
+                    Click an image to view it in full screen.
+                </p>
+
+            </div>
+
+            <div class="certificate-grid">
+
+                <div class="certificate-card">
+
+                    <h3>Homepage</h3>
+
+                    <img class="screen-image"
+                        src="image/image.png"
+                        alt="Grow Wise Academy Homepage">
+
+                    <p>
+                        Main landing page of Grow Wise Academy.
+                    </p>
+
+                </div>
+
+
+                <div class="certificate-card">
+
+                    <h3>Other Website Page</h3>
+
+                    <img class="screen-image"
+                        src="image/youtube.png"
+                        alt="Grow Wise Academy Website Page">
+
+                    <p>
+                        Screenshot of another important page.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROJECT LINKS -->
+
+        <section class="container" id="project-links">
+
+            <div class="section-title">
+
+                <h2>Project Links</h2>
+
+                <p>
+                    Explore the source code or open the live application.
+                </p>
+
+            </div>
+
+            <div class="projects-grid">
+
+                <article class="project-card">
+
+                    <h3>GitHub Repository</h3>
+
+                    <p>
+                        View the project source code
+                        and development files.
+                    </p>
+
+                    <a class="btn"
+                       href="https://github.com/madanspgowda-dot/Educare"
+                       target="_blank"
+                       rel="noopener noreferrer">
+
+                        View on GitHub ↗
+
+                    </a>
+
+                    <span>Source Code</span>
+
+                </article>
+
+
+                <article class="project-card">
+
+                    <h3>Live Website</h3>
+
+                    <p>
+                        Visit the deployed Grow Wise Academy application
+                        hosted on Netlify.
+                    </p>
+
+                    <a class="btn"
+                       href="https://grow-wise-academy.netlify.app/"
+                       target="_blank"
+                       rel="noopener noreferrer">
+
+                        Open Live Website ↗
+
+                    </a>
+
+                    <span>Netlify Deployment</span>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONCLUSION -->
+
+        <section class="container" id="conclusion">
+
+            <div class="section-title">
+
+                <h2>Conclusion</h2>
+
+            </div>
+
+            <div class="about-content">
+
+                <p>
+                    Grow Wise Academy is designed to support students
+                    by bringing textbooks, study materials and educational
+                    videos together in one application.
+
+                    Contact details and a feedback option help students
+                    communicate with the platform.
+
+                    The project demonstrates the use of HTML, CSS
+                    and JavaScript for frontend development,
+                    PHP for backend development, and XAMPP
+                    for local development and testing.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            Grow Wise Academy · Web Development Project
+        </p>
+
+    </footer>
+
+
+    <!-- FULL SCREEN IMAGE VIEWER -->
+
+    <div class="image-viewer"
+        id="imageViewer"
+        role="dialog"
+        aria-modal="true">
+
+        <button class="image-viewer-close"
+            id="closeImageViewer"
+            type="button">
+
+            &times;
+
+        </button>
+
+        <img id="imageViewerPhoto" src="" alt="Full-size preview">
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        // MOBILE SIDEBAR
+
+        const sidebar = document.getElementById("sidebar");
+
+        const overlay = document.getElementById("overlay");
+
+        const openMenu = document.getElementById("openMenu");
+
+        const closeMenu = document.getElementById("closeMenu");
+
+
+        function showMenu() {
+
+            sidebar.classList.add("active");
+
+            overlay.classList.add("active");
+
+            openMenu.setAttribute("aria-expanded", "true");
+
+        }
+
+
+        function hideMenu() {
+
+            sidebar.classList.remove("active");
+
+            overlay.classList.remove("active");
+
+            openMenu.setAttribute("aria-expanded", "false");
+
+        }
+
+
+        openMenu.addEventListener("click", showMenu);
+
+        closeMenu.addEventListener("click", hideMenu);
+
+        overlay.addEventListener("click", hideMenu);
+
+
+        document.querySelectorAll(".sidebar-links a")
+            .forEach(link => {
+
+                link.addEventListener("click", hideMenu);
+
+            });
+
+
+
+        // FULL SCREEN IMAGE VIEWER
+
+        const viewer = document.getElementById("imageViewer");
+
+        const viewerImg = document.getElementById("imageViewerPhoto");
+
+        const closeViewer = document.getElementById("closeImageViewer");
+
+
+        // Open image
+
+        function openViewer(img) {
+
+            if (!img.complete || !img.naturalWidth) {
+                return;
+            }
+
+            viewerImg.src = img.currentSrc || img.src;
+
+            viewerImg.alt = img.alt || "Full-size preview";
+
+            viewer.classList.add("active");
+
+            closeViewer.focus();
+
+        }
+
+
+        // Close image
+
+        function hideViewer() {
+
+            viewer.classList.remove("active");
+
+            viewerImg.src = "";
+
+        }
+
+
+        // Click any image to open full screen
+
+        document.querySelectorAll("img").forEach(img => {
+
+            if (img.id !== "imageViewerPhoto") {
+
+                img.addEventListener("click", function() {
+
+                    openViewer(this);
+
+                });
+
+            }
+
+        });
+
+
+        // Close button
+
+        closeViewer.addEventListener("click", hideViewer);
+
+
+        // Click outside image to close
+
+        viewer.addEventListener("click", function(event) {
+
+            if (event.target === viewer) {
+
+                hideViewer();
+
+            }
+
+        });
+
+
+        // Escape key to close
+
+        document.addEventListener("keydown", function(event) {
+
+            if (event.key === "Escape") {
+
+                hideMenu();
+
+                hideViewer();
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>

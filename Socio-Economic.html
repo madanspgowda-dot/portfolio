@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socio-Economic Indicators Detection Through Geospatial Data</title>
+
+   <link rel="stylesheet" href="style.css">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #0b1120;
+            color: #e2e8f0;
+        }
+
+        .project-hero {
+            padding: 100px 20px 65px;
+            text-align: center;
+        }
+
+        .project-hero h1 {
+            color: #38bdf8;
+            font-size: clamp(30px, 5vw, 48px);
+            margin-bottom: 18px;
+        }
+
+        .project-hero p {
+            color: #94a3b8;
+            max-width: 850px;
+            margin: auto;
+            line-height: 1.8;
+        }
+
+        .project-badge {
+            display: inline-block;
+            padding: 8px 18px;
+            border: 1px solid #38bdf8;
+            border-radius: 25px;
+            color: #38bdf8;
+            margin-bottom: 20px;
+        }
+
+        .project-section {
+            max-width: 1100px;
+            margin: auto;
+            padding: 55px 25px;
+        }
+
+        .project-section h2 {
+            color: #38bdf8;
+            margin-bottom: 22px;
+            font-size: 28px;
+        }
+
+        .project-section p {
+            color: #cbd5e1;
+            line-height: 1.9;
+            margin-bottom: 15px;
+        }
+
+        .info-card {
+            background: #111a2e;
+            border: 1px solid #25314b;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            border-color: #38bdf8;
+        }
+
+        .info-card h3 {
+            color: #38bdf8;
+            margin-bottom: 12px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 20px;
+        }
+
+        .tech-tag {
+            display: inline-block;
+            background: #17243a;
+            color: #38bdf8;
+            border: 1px solid #25314b;
+            padding: 10px 18px;
+            margin: 7px;
+            border-radius: 7px;
+        }
+
+        .steps {
+            border-left: 3px solid #38bdf8;
+            padding-left: 25px;
+            margin-left: 10px;
+        }
+
+        .step {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .step::before {
+            content: "";
+            width: 13px;
+            height: 13px;
+            background: #38bdf8;
+            border-radius: 50%;
+            position: absolute;
+            left: -33px;
+            top: 5px;
+        }
+
+        .step h3 {
+            color: #38bdf8;
+            margin-bottom: 8px;
+        }
+
+        .project-image {
+            width: 100%;
+            min-height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid #25314b;
+            cursor: pointer;
+        }
+
+        .image-box {
+            background: #111a2e;
+            border-radius: 12px;
+            padding: 15px;
+            border: 1px solid #25314b;
+        }
+
+        .image-box h3 {
+            color: #38bdf8;
+            margin: 12px 0 5px;
+        }
+
+        .project-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .project-links a {
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 7px;
+            background: #38bdf8;
+            color: #0b1120;
+            font-weight: bold;
+        }
+
+        .project-links a:hover {
+            background: #0ea5e9;
+        }
+
+        .image-viewer {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+
+        .image-viewer.active {
+            display: flex;
+        }
+
+        .image-viewer img {
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 10px;
+        }
+
+        .close-viewer {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+        }
+
+        @media(max-width: 600px) {
+            .project-hero {
+                padding-top: 70px;
+            }
+
+            .project-section {
+                padding: 35px 18px;
+            }
+
+            .project-hero h1 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HERO SECTION -->
+    <section class="project-hero">
+
+        <span class="project-badge">College Main Project</span>
+
+        <h1>Socio-Economic Indicators Detection Through Geospatial Data</h1>
+
+        <p>
+            An intelligent Machine Learning project that uses satellite
+            imagery and Convolutional Neural Networks (CNN) to analyze
+            geospatial data and estimate socio-economic ranges of
+            geographical regions.
+        </p>
+
+    </section>
+
+
+    <!-- OVERVIEW -->
+    <section class="project-section">
+
+        <h2>Project Overview</h2>
+
+        <div class="info-card">
+
+            <p>
+                Socio-economic conditions play an important role in
+                understanding the development of a particular region.
+                Traditional methods of collecting socio-economic data
+                can require significant time, effort and resources.
+            </p>
+
+            <p>
+                This project uses satellite images and Machine Learning
+                techniques to identify visual patterns in geographical
+                areas. A Convolutional Neural Network (CNN), developed
+                using TensorFlow, is used to analyze satellite imagery
+                and predict the socio-economic range of a selected region.
+            </p>
+
+            <p>
+                The application uses Flask as its backend framework,
+                Pandas and NumPy for data processing, and MySQL for
+                database management.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- OBJECTIVES -->
+    <section class="project-section">
+
+        <h2>Project Objectives</h2>
+
+        <div class="info-grid">
+
+            <div class="info-card">
+                <h3>Satellite Image Analysis</h3>
+                <p>
+                    Analyze satellite images to identify geographical
+                    patterns and features related to regional development.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <h3>Machine Learning Prediction</h3>
+                <p>
+                    Apply CNN-based image analysis to estimate the
+                    socio-economic range of geographical locations.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <h3>Data Processing</h3>
+                <p>
+                    Process and prepare geospatial image data using
+                    Pandas and NumPy for model analysis.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <h3>Web Application</h3>
+                <p>
+                    Provide an interface where users can submit satellite
+                    images and view the model's prediction results.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- TECHNOLOGIES -->
+    <section class="project-section">
+
+        <h2>Technologies Used</h2>
+
+        <div class="info-card">
+
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Machine Learning</span>
+            <span class="tech-tag">TensorFlow</span>
+            <span class="tech-tag">CNN Algorithm</span>
+            <span class="tech-tag">Flask</span>
+            <span class="tech-tag">Pandas</span>
+            <span class="tech-tag">NumPy</span>
+            <span class="tech-tag">MySQL</span>
+            <span class="tech-tag">HTML</span>
+            <span class="tech-tag">CSS</span>
+            <span class="tech-tag">JavaScript</span>
+
+        </div>
+
+    </section>
+
+
+    <!-- WORKING PROCESS -->
+    <section class="project-section">
+
+        <h2>How the Project Works</h2>
+
+        <div class="info-card">
+
+            <div class="steps">
+
+                <div class="step">
+                    <h3>1. Satellite Image Input</h3>
+                    <p>
+                        The user provides a satellite image of the
+                        geographical region that needs to be analyzed.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <h3>2. Image Preprocessing</h3>
+                    <p>
+                        The image is prepared for analysis through
+                        preprocessing operations such as resizing,
+                        normalization and data preparation.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <h3>3. CNN Model Analysis</h3>
+                    <p>
+                        The trained Convolutional Neural Network
+                        analyzes the image and extracts important
+                        visual features.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <h3>4. Socio-Economic Prediction</h3>
+                    <p>
+                        Based on the patterns learned during training,
+                        the model predicts the socio-economic category
+                        or range associated with the region.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <h3>5. Result Display and Storage</h3>
+                    <p>
+                        Flask handles the application workflow,
+                        displays the prediction to the user, and
+                        MySQL stores relevant application records.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CNN -->
+    <section class="project-section">
+
+        <h2>Machine Learning Model – CNN</h2>
+
+        <div class="info-card">
+
+            <h3>Convolutional Neural Network</h3>
+
+            <p>
+                CNN is a Deep Learning algorithm commonly used for
+                image recognition and image classification tasks.
+                It automatically learns important visual features
+                from images.
+            </p>
+
+            <p>
+                In this project, the CNN model is used to analyze
+                satellite images and learn patterns that help
+                estimate the socio-economic range of geographical
+                regions.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- GALLERY -->
+    <section class="project-section">
+
+        <h2>Project Screenshots</h2>
+
+        <div class="info-grid">
+
+            <div class="image-box">
+                <img
+                    src="image/socio-economic-homepage.jpg"
+                    alt="Project homepage"
+                    class="project-image"
+                    onclick="openImage(this.src)"
+                >
+                <h3>Application Homepage</h3>
+            </div>
+
+            <div class="image-box">
+                <img
+                    src="image/satellite-image.jpg"
+                    alt="Satellite image input"
+                    class="project-image"
+                    onclick="openImage(this.src)"
+                >
+                <h3>Satellite Image Input</h3>
+            </div>
+
+            <div class="image-box">
+                <img
+                    src="image/prediction-result.jpg"
+                    alt="Prediction result"
+                    class="project-image"
+                    onclick="openImage(this.src)"
+                >
+                <h3>Prediction Result</h3>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONCLUSION -->
+    <section class="project-section">
+
+        <h2>Project Conclusion</h2>
+
+        <div class="info-card">
+
+            <p>
+                The project demonstrates how Machine Learning and
+                geospatial satellite imagery can be combined to
+                study socio-economic patterns across geographical
+                regions.
+            </p>
+
+            <p>
+                By integrating CNN, TensorFlow, Flask, Pandas,
+                NumPy and MySQL, the system provides an approach
+                for analyzing satellite images and estimating
+                socio-economic ranges.
+            </p>
+
+            <p>
+                This college main project helped develop practical
+                knowledge of Deep Learning, image processing,
+                backend development and database integration.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- IMAGE VIEWER -->
+    <div class="image-viewer" id="imageViewer"
+         onclick="closeImage(event)">
+
+        <span class="close-viewer"
+              onclick="closeImage()">&times;</span>
+
+        <img id="viewerImage" src="" alt="Full size project image">
+
+    </div>
+
+
+    <script>
+
+        function openImage(imageSrc) {
+
+            const viewer = document.getElementById("imageViewer");
+            const viewerImage = document.getElementById("viewerImage");
+
+            viewerImage.src = imageSrc;
+            viewer.classList.add("active");
+
+        }
+
+        function closeImage(event) {
+
+            if (
+                !event ||
+                event.target.id === "imageViewer" ||
+                event.target.classList.contains("close-viewer")
+            ) {
+
+                document.getElementById("imageViewer")
+                    .classList.remove("active");
+
+            }
+
+        }
+
+        document.addEventListener("keydown", function(event) {
+
+            if (event.key === "Escape") {
+                document.getElementById("imageViewer")
+                    .classList.remove("active");
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
